@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       },
       {
         model: Tag,
-        attributes: ['data']
+        attributes: ['tag_name']
       }
     ]
   })
@@ -31,6 +31,9 @@ router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
   Product.findOne({
+    where: {
+      id: req.params.id
+    },
     include: [
       {
         model: Category,
@@ -38,7 +41,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Tag,
-        attributes: ['data']
+        attributes: ['tag_name']
       }
     ]
   })
